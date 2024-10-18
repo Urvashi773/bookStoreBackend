@@ -14,7 +14,7 @@ app.use(express.json());
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-const mongoURI =process.env.mongoDBURI;
+const mongoURI =process.env.MONGO_DBURI;
 /* console.log(URI, "this is uri") */
 
 // connect to mongoDB
