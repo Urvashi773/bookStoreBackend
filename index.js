@@ -8,17 +8,22 @@ import nodemailer from 'nodemailer';
 import bookRoute from "./route/book.route.js"
 import userRoute  from "./route/user.route.js"
 import sendmailRoute from "./route/sendmail.route.js"
+import connectDB from "./config/db.js";
+
+dotenv.config();
+//db connected
+connectDB()
 const app = express();
 app.use(cors());
 app.use(express.json());
-dotenv.config();
+
 
 const PORT = process.env.PORT || 4000;
-const mongoURI =process.env.MONGO_DBURI;
+
 /* console.log(URI, "this is uri") */
 
 // connect to mongoDB
-async function connectToDB() {
+/* async function connectToDB() {
     try {
         await mongoose.connect(mongoURI, {
             useNewUrlParser: true,
@@ -30,7 +35,7 @@ async function connectToDB() {
     }
 }
 
-connectToDB();
+connectToDB(); */
 
 //defining routes
 
@@ -40,5 +45,5 @@ app.use('/email',sendmailRoute)
 
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`App listening on http://localhost:${PORT}`)
 } )
